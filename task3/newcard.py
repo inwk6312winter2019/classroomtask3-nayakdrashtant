@@ -9,5 +9,27 @@ class card():
     def __str__(self):
          return f"The rank is {card.rank_names[self.rank]} and the suit is {card.suite_names[self.suite]}"
 
-ace_of_spade = card(1,3)
-print(ace_of_spade)
+    def __lt__(self):
+        if self.suit < other.suit: return True
+        if self.suit > other.suit: return False
+        return self.rank < other.rank
+
+    def __eq__(self,other):
+        return self.rank == self.rank and self.suit == other.suit
+
+class Deck:
+    def __init__(self):
+        self.cards = []
+        for suit in range(4):
+            for rank in range(1,14):
+                card = card(suit,rank)
+                self.cards.append(card)
+    
+    def pop_card(self):
+        return self.cards.pop()
+
+#ace_of_spade = card(1,3)
+#print(ace_of_spade)
+mycards = Deck()
+for card in mycards:
+    print(card)
